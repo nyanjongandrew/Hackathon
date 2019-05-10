@@ -25,17 +25,12 @@ import com.example.sample.config.filter.AuthenticationTokenFilter;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	// @Autowired
-		// private AuthenticationTokenFilter authenticationTokenFilter;
 
 		@Bean
 		public AuthenticationTokenFilter getAuthenticationTokenFilter() {
 			return new AuthenticationTokenFilter();
 		}
-//		@Bean
-//		public CorsFilter getCorsFilter() {
-//			return new CorsFilter();
-//		}
+
 
 		@Override
 		protected void configure(final HttpSecurity http) throws Exception {
@@ -51,13 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http.headers().xssProtection().block(false);
 			// Cntent security Policy
 			http.headers().contentSecurityPolicy("script-src 'self' ; object-src ; report-uri");
-			// add referrer policy
-			// http.headers()
-			// .referrerPolicy(ReferrerPolicy.SAME_ORIGIN);
-			// to ensure that the browser always uses Https
-			// http.headers().httpStrictTransportSecurity().includeSubDomains(true).maxAgeInSeconds(31536000);
-//			http.addFilterBefore(getCorsFilter(), ChannelProcessingFilter.class);
-
+			
 		}
 
 		/* To allow Pre-flight [OPTIONS] request from browser */

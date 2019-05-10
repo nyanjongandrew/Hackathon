@@ -1,6 +1,7 @@
 package com.example.sample.config.filter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Optional;
 
 import javax.servlet.FilterChain;
@@ -32,6 +33,9 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 	@Value("${token.header}")
 	private String tokenHeader;
 
+	@Value("${source.header.value}")
+	private String src;
+	
 	@Autowired
 	private TokenUtils tokenUtils;
 
@@ -58,15 +62,23 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 			final HttpServletRequest httpRequest = request;
 			if (!isAsyncStarted(request) && !isAsyncDispatch(request)
 					&& !httpRequest.getMethod().equals(String.valueOf(HttpMethod.OPTIONS))) {
-				final Optional<String> authToken = Optional.ofNullable(httpRequest.getHeader(tokenHeader));
-				// System.out.println("token: " + authToken.orElse(null));
+				final Optional<String> authToken = Optional.ofNullable(httpRequest.getHeader("origin-api"));
+//				Enumeration headerNames = request.getHeaderNames();
+//				while (headerNames.hasMoreElements()) {
+//					String key = (String) headerNames.nextElement();
+//					String value = request.getHeader(key);
+//					System.out.println(key + " "+value);
+//				}
+
+				 System.out.println("token: " + authToken.orElse(null));
 				final String username = tokenUtils.getUsernameFromToken(authToken.orElse(null));
 				if (username == null) {
 					throw new UnAuthorisedUserException(env.getProperty("invalid.token"));
 				}
 
 				final HttpServletResponse httpResponse = response;
-				httpResponse.setHeader("Authorization", authToken.orElse(null));
+				//httpResponse.setHeader("Authorization", authToken.orElse(null));
+				httpResponse.setHeader("ORIGIN-API", authToken.orElse(null));
 				// if (SecurityContextHolder.getContext().getAuthentication() ==
 				// null) {
 				tokenUtils.loadUser(username, authToken, httpRequest);
@@ -84,7 +96,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 			apiError.setCode(String.valueOf(HttpStatus.UNAUTHORIZED));
 			final HttpServletResponse response2 = utilService.addCORSHeaders(response);
 			response2.setContentType(String.valueOf(MediaType.APPLICATION_JSON));
-			response2.setStatus(Integer.valueOf(String.valueOf(HttpStatus.UNAUTHORIZED)));
+			//response2.setStatus(Integer.valueOf(String.valueOf(HttpStatus.UNAUTHORIZED)));
+			response2.setStatus(Integer.valueOf(401));
 			response2.getWriter().write(map.writeValueAsString(apiError));
 
 		} catch (final Exception ex) {
@@ -97,7 +110,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 			apiError.setCode(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR));
 			final HttpServletResponse response2 = response;
 			response2.setContentType(String.valueOf(MediaType.APPLICATION_JSON));
-			response2.setStatus(Integer.valueOf(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR)));
+			//response2.setStatus(Integer.valueOf(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR)));
+			response2.setStatus(Integer.valueOf(500));
 			response2.getWriter().write(map.writeValueAsString(apiError));
 
 		}

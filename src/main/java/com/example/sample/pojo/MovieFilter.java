@@ -1,5 +1,8 @@
 package com.example.sample.pojo;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 /**
  * Holds movie data
  * 
@@ -11,6 +14,8 @@ public class MovieFilter {
 	private String title;
 	private String description;
 	private String recommendation;
+	@Min(value = 1)
+	@Max(value = 5)
 	private Integer rating;
 	private Boolean watched;
 

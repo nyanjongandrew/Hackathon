@@ -62,7 +62,7 @@ public class MoviesController {
 		return movieFacade.retriveAll();
 	}
 	
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@RequestMapping(value = "/filterMovies", method = RequestMethod.POST)
 	public ResponseEntity<List<MovieInfo>> fetchFiltered(@Valid @RequestBody MovieFilter filter, BindingResult bindingResult)
 			throws Exception {
 		utilityFacade.validateRequest(bindingResult);

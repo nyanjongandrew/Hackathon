@@ -37,6 +37,7 @@ public class MovieFacadeImpl implements MovieFacade {
 			throw new PreconditionFailedException(movieExists);
 		}
 		Moviez moviez = moviezService.prepareMoviezServiceForInsert(filter);
+		moviezRepository.save(moviez);
 		Created created = new Created();
 		created.setCreated(true);
 		return ResponseEntity.ok(created);

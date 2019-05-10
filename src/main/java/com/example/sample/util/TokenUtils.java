@@ -22,8 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.example.sample.config.security.EmployeeUser;
+import com.example.sample.config.security.User;
 import com.example.sample.exception.ExpectationFailedException;
 import com.example.sample.exception.UnAuthorisedUserException;
 import com.example.sample.model.AppUser;
@@ -285,7 +284,7 @@ public class TokenUtils {
 	}
 
 	public Boolean validateToken(String token, UserDetails userDetails) throws UnAuthorisedUserException {
-		final EmployeeUser user = (EmployeeUser) userDetails;
+		final User user = (User) userDetails;
 		final String username = userDetails.getUsername();
 		if (username.equals(user.getUsername()) && !isTokenExpired(token)) {
 			return true;

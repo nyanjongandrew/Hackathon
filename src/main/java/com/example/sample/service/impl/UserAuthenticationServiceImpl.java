@@ -107,13 +107,13 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
 		logger.debug("Load Client");
 		User userDetails = null;
 
-		if (Validators.isValidEmail(email)) {
+		//if (Validators.isValidEmail(email)) {
 			final AppUser selfServiceUser = selfServiceUserRepository.findByUsername(email);
 			if (selfServiceUser != null) {
 				userDetails = new User(selfServiceUser, selfServiceUser.getUsername(), selfServiceUser.getPassword(),
 						authorities);
 			}
-		}
+		//}
 
 		return userDetails;
 	}
