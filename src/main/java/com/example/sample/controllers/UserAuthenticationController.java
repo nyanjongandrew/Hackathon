@@ -45,6 +45,6 @@ public class UserAuthenticationController {
 	public ResponseEntity<TokenInfo> userLogin(@Valid @RequestBody LoginInfo filter,
 			BindingResult bindingResult) throws Exception {
 		utilityFacade.validateRequest(bindingResult);
-		return null;
+		return userFacade.loginUser(filter);
 	}
 }

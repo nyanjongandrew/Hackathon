@@ -1,4 +1,7 @@
 package com.example.sample.service;
+
+import com.example.sample.pojo.MovieFilter;
+
 /**
  * 
  * @author user
@@ -6,7 +9,7 @@ package com.example.sample.service;
  * @param <T>
  */
 public interface MoviezService<T> {
-  T prepareMoviezServiceForInsert(Object o) throws Exception;
+  T prepareMoviezServiceForInsert(MovieFilter o) throws Exception;
   
-  T prepareMovieServiceForUpdate() throws Exception;
+  T prepareMovieServiceForUpdate(MovieFilter filter) throws Exception;
 }

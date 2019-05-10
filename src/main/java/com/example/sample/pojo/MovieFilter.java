@@ -7,6 +7,7 @@ package com.example.sample.pojo;
  *
  */
 public class MovieFilter {
+	private String id;
 	private String title;
 	private String description;
 	private String recommendation;
@@ -51,6 +52,14 @@ public class MovieFilter {
 
 	public void setWatched(Boolean watched) {
 		this.watched = watched;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

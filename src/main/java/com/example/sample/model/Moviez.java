@@ -1,6 +1,5 @@
 package com.example.sample.model;
 
-
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -26,6 +25,8 @@ public class Moviez implements Serializable {
 
 	@Column(name="last_updated")
 	private Timestamp lastUpdated;
+
+	private int rating;
 
 	@Lob
 	private String recommendation;
@@ -73,6 +74,14 @@ public class Moviez implements Serializable {
 
 	public void setLastUpdated(Timestamp lastUpdated) {
 		this.lastUpdated = lastUpdated;
+	}
+
+	public int getRating() {
+		return this.rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
 	public String getRecommendation() {
