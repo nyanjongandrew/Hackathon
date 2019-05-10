@@ -1,0 +1,567 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<s:element name="balanceEnquiry">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vAcctNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantBranch" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vTeller" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="balanceEnquiryResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="balanceEnquiryResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="ArrayOfString">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="AuthHeader" type="tns:AuthHeader"/>
+<s:complexType name="AuthHeader">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vUsername" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPassword" type="s:string"/>
+</s:sequence>
+<s:anyAttribute/>
+</s:complexType>
+<s:element name="fundTransfer">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vAcctNo" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="vAmt" type="s:double"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPaymentMode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vChequeNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPayersName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vTellNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vThirdPartyTxId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vBroker" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vBrokertxnId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vChannel" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vCurrency" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantBranch" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vCahierID" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="fundTransferResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="fundTransferResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="fundTransferRepeatition">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vAcctNo" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="vAmt" type="s:double"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPaymentMode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vChequeNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPayersName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vTellNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vThirdPartyTxId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vBroker" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vBrokertxnId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vChannel" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vCurrency" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantBranch" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vCahierID" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="fundTransferRepeatitionResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="fundTransferRepeatitionResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="fundTransferConfirmation">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vECGTranxId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vBrokerTranxId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vThirdPartyTranxId" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="fundTransferConfirmationResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="fundTransferConfirmationResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="accountNotification">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vPassCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantBranch" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vECGAcctNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vECAcctName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vNarration" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vTransStatus" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="vAmount" type="s:double"/>
+<s:element minOccurs="1" maxOccurs="1" name="vAcctCreditDate" type="s:dateTime"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="accountNotificationResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="accountNotificationResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="customerCreditVerification">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vECGTranxId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vAccountNo" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="customerCreditVerificationResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="customerCreditVerificationResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="reversalNotification">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vAcctNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vECGTranxId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vBrokerTranxIdUsed" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vThirdPartyTranxIdUsed" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vMerchantBranch" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPaymentMode" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="vOldAmount" type="s:double"/>
+<s:element minOccurs="1" maxOccurs="1" name="vNewAmount" type="s:double"/>
+<s:element minOccurs="0" maxOccurs="1" name="vNaration" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="reversalNotificationResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="reversalNotificationResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="retrieveBillInformation">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vAcctNo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vPeriod" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="retrieveBillInformationResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="retrieveBillInformationResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="paymentEnquiry">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vAcctNo" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="vNoOfPayments" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="paymentEnquiryResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="paymentEnquiryResult">
+<s:complexType>
+<s:sequence>
+<s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+<s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="changeCredentials">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="vUserID" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vCurrentUsername" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vCurrentPassword" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vNewUsername" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="vNewPassword" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="changeCredentialsResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="changeCredentialsResult" type="tns:ArrayOfString"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="balanceEnquirySoapIn">
+<wsdl:part name="parameters" element="tns:balanceEnquiry"/>
+</wsdl:message>
+<wsdl:message name="balanceEnquirySoapOut">
+<wsdl:part name="parameters" element="tns:balanceEnquiryResponse"/>
+</wsdl:message>
+<wsdl:message name="balanceEnquiryAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="fundTransferSoapIn">
+<wsdl:part name="parameters" element="tns:fundTransfer"/>
+</wsdl:message>
+<wsdl:message name="fundTransferSoapOut">
+<wsdl:part name="parameters" element="tns:fundTransferResponse"/>
+</wsdl:message>
+<wsdl:message name="fundTransferAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="fundTransferRepeatitionSoapIn">
+<wsdl:part name="parameters" element="tns:fundTransferRepeatition"/>
+</wsdl:message>
+<wsdl:message name="fundTransferRepeatitionSoapOut">
+<wsdl:part name="parameters" element="tns:fundTransferRepeatitionResponse"/>
+</wsdl:message>
+<wsdl:message name="fundTransferRepeatitionAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="fundTransferConfirmationSoapIn">
+<wsdl:part name="parameters" element="tns:fundTransferConfirmation"/>
+</wsdl:message>
+<wsdl:message name="fundTransferConfirmationSoapOut">
+<wsdl:part name="parameters" element="tns:fundTransferConfirmationResponse"/>
+</wsdl:message>
+<wsdl:message name="fundTransferConfirmationAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="accountNotificationSoapIn">
+<wsdl:part name="parameters" element="tns:accountNotification"/>
+</wsdl:message>
+<wsdl:message name="accountNotificationSoapOut">
+<wsdl:part name="parameters" element="tns:accountNotificationResponse"/>
+</wsdl:message>
+<wsdl:message name="accountNotificationAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="customerCreditVerificationSoapIn">
+<wsdl:part name="parameters" element="tns:customerCreditVerification"/>
+</wsdl:message>
+<wsdl:message name="customerCreditVerificationSoapOut">
+<wsdl:part name="parameters" element="tns:customerCreditVerificationResponse"/>
+</wsdl:message>
+<wsdl:message name="customerCreditVerificationAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="reversalNotificationSoapIn">
+<wsdl:part name="parameters" element="tns:reversalNotification"/>
+</wsdl:message>
+<wsdl:message name="reversalNotificationSoapOut">
+<wsdl:part name="parameters" element="tns:reversalNotificationResponse"/>
+</wsdl:message>
+<wsdl:message name="reversalNotificationAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="retrieveBillInformationSoapIn">
+<wsdl:part name="parameters" element="tns:retrieveBillInformation"/>
+</wsdl:message>
+<wsdl:message name="retrieveBillInformationSoapOut">
+<wsdl:part name="parameters" element="tns:retrieveBillInformationResponse"/>
+</wsdl:message>
+<wsdl:message name="retrieveBillInformationAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="paymentEnquirySoapIn">
+<wsdl:part name="parameters" element="tns:paymentEnquiry"/>
+</wsdl:message>
+<wsdl:message name="paymentEnquirySoapOut">
+<wsdl:part name="parameters" element="tns:paymentEnquiryResponse"/>
+</wsdl:message>
+<wsdl:message name="paymentEnquiryAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:message name="changeCredentialsSoapIn">
+<wsdl:part name="parameters" element="tns:changeCredentials"/>
+</wsdl:message>
+<wsdl:message name="changeCredentialsSoapOut">
+<wsdl:part name="parameters" element="tns:changeCredentialsResponse"/>
+</wsdl:message>
+<wsdl:message name="changeCredentialsAuthHeader">
+<wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+</wsdl:message>
+<wsdl:portType name="BillsPaymentSoap">
+<wsdl:operation name="balanceEnquiry">
+<wsdl:input message="tns:balanceEnquirySoapIn"/>
+<wsdl:output message="tns:balanceEnquirySoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="fundTransfer">
+<wsdl:input message="tns:fundTransferSoapIn"/>
+<wsdl:output message="tns:fundTransferSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="fundTransferRepeatition">
+<wsdl:input message="tns:fundTransferRepeatitionSoapIn"/>
+<wsdl:output message="tns:fundTransferRepeatitionSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="fundTransferConfirmation">
+<wsdl:input message="tns:fundTransferConfirmationSoapIn"/>
+<wsdl:output message="tns:fundTransferConfirmationSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="accountNotification">
+<wsdl:input message="tns:accountNotificationSoapIn"/>
+<wsdl:output message="tns:accountNotificationSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="customerCreditVerification">
+<wsdl:input message="tns:customerCreditVerificationSoapIn"/>
+<wsdl:output message="tns:customerCreditVerificationSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="reversalNotification">
+<wsdl:input message="tns:reversalNotificationSoapIn"/>
+<wsdl:output message="tns:reversalNotificationSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="retrieveBillInformation">
+<wsdl:input message="tns:retrieveBillInformationSoapIn"/>
+<wsdl:output message="tns:retrieveBillInformationSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="paymentEnquiry">
+<wsdl:input message="tns:paymentEnquirySoapIn"/>
+<wsdl:output message="tns:paymentEnquirySoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="changeCredentials">
+<wsdl:input message="tns:changeCredentialsSoapIn"/>
+<wsdl:output message="tns:changeCredentialsSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BillsPaymentSoap" type="tns:BillsPaymentSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="balanceEnquiry">
+<soap:operation soapAction="http://tempuri.org/balanceEnquiry" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:balanceEnquiryAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fundTransfer">
+<soap:operation soapAction="http://tempuri.org/fundTransfer" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:fundTransferAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fundTransferRepeatition">
+<soap:operation soapAction="http://tempuri.org/fundTransferRepeatition" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:fundTransferRepeatitionAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fundTransferConfirmation">
+<soap:operation soapAction="http://tempuri.org/fundTransferConfirmation" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:fundTransferConfirmationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="accountNotification">
+<soap:operation soapAction="http://tempuri.org/accountNotification" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:accountNotificationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="customerCreditVerification">
+<soap:operation soapAction="http://tempuri.org/customerCreditVerification" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:customerCreditVerificationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="reversalNotification">
+<soap:operation soapAction="http://tempuri.org/reversalNotification" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:reversalNotificationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="retrieveBillInformation">
+<soap:operation soapAction="http://tempuri.org/retrieveBillInformation" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:retrieveBillInformationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="paymentEnquiry">
+<soap:operation soapAction="http://tempuri.org/paymentEnquiry" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:paymentEnquiryAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="changeCredentials">
+<soap:operation soapAction="http://tempuri.org/changeCredentials" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:changeCredentialsAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="BillsPaymentSoap12" type="tns:BillsPaymentSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="balanceEnquiry">
+<soap12:operation soapAction="http://tempuri.org/balanceEnquiry" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:balanceEnquiryAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fundTransfer">
+<soap12:operation soapAction="http://tempuri.org/fundTransfer" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:fundTransferAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fundTransferRepeatition">
+<soap12:operation soapAction="http://tempuri.org/fundTransferRepeatition" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:fundTransferRepeatitionAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fundTransferConfirmation">
+<soap12:operation soapAction="http://tempuri.org/fundTransferConfirmation" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:fundTransferConfirmationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="accountNotification">
+<soap12:operation soapAction="http://tempuri.org/accountNotification" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:accountNotificationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="customerCreditVerification">
+<soap12:operation soapAction="http://tempuri.org/customerCreditVerification" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:customerCreditVerificationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="reversalNotification">
+<soap12:operation soapAction="http://tempuri.org/reversalNotification" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:reversalNotificationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="retrieveBillInformation">
+<soap12:operation soapAction="http://tempuri.org/retrieveBillInformation" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:retrieveBillInformationAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="paymentEnquiry">
+<soap12:operation soapAction="http://tempuri.org/paymentEnquiry" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:paymentEnquiryAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="changeCredentials">
+<soap12:operation soapAction="http://tempuri.org/changeCredentials" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:changeCredentialsAuthHeader" part="AuthHeader" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="BillsPayment">
+<wsdl:port name="BillsPaymentSoap" binding="tns:BillsPaymentSoap">
+<soap:address location="https://service.ecggh.com:8000/postpaidserviceprod/billspayment.asmx"/>
+</wsdl:port>
+<wsdl:port name="BillsPaymentSoap12" binding="tns:BillsPaymentSoap12">
+<soap12:address location="https://service.ecggh.com:8000/postpaidserviceprod/billspayment.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

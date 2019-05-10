@@ -9,12 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import com.example.sample.exception.InsufficientFundsException;
-import com.example.sample.exception.MaxAllowableTransferLimitException;
 import com.example.sample.exception.ObjectNotFoundException;
 import com.example.sample.exception.PreconditionFailedException;
-import com.example.sample.exception.WrongPinException;
 import com.example.sample.pojo.APIError;
 import com.example.sample.service.UtilService;
 
@@ -62,51 +58,7 @@ public class ControllerAdvice {
 		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(apiError);
 
 	}
-	@ResponseBody
-	@ExceptionHandler(WrongPinException.class)
-	@ResponseStatus(HttpStatus.EXPECTATION_FAILED)
-	ResponseEntity<APIError> preconditionFailedExceptionHandler(WrongPinException ex) {
-		logger.error(ex.getMessage());
-		ex.printStackTrace();
-		// for debugging purposes
-		final APIError apiError = new APIError();
-		apiError.setMsgDeveloper(
-				ex.getMessage() == null || ex.getMessage().isEmpty() ? utilService.getStackTrace(ex) : ex.getMessage());
-		apiError.setMessage(ex.getMessage() != null && !ex.getMessage().isEmpty() ? ex.getMessage() : genericError);
-		apiError.setCode(String.valueOf(HttpStatus.EXPECTATION_FAILED));
-		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(apiError);
-
-	}
-	@ResponseBody
-	@ExceptionHandler(MaxAllowableTransferLimitException.class)
-	@ResponseStatus(HttpStatus.EXPECTATION_FAILED)
-	ResponseEntity<APIError> maxAllowableLimitTransferException(MaxAllowableTransferLimitException ex) {
-		logger.error(ex.getMessage());
-		ex.printStackTrace();
-		// for debugging purposes
-		final APIError apiError = new APIError();
-		apiError.setMsgDeveloper(
-				ex.getMessage() == null || ex.getMessage().isEmpty() ? utilService.getStackTrace(ex) : ex.getMessage());
-		apiError.setMessage(ex.getMessage() != null && !ex.getMessage().isEmpty() ? ex.getMessage() : genericError);
-		apiError.setCode(String.valueOf(HttpStatus.EXPECTATION_FAILED));
-		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(apiError);
-
-	}
-	@ResponseBody
-	@ExceptionHandler(InsufficientFundsException.class)
-	@ResponseStatus(HttpStatus.EXPECTATION_FAILED)
-	ResponseEntity<APIError> insufficientFundsException(InsufficientFundsException ex) {
-		logger.error(ex.getMessage());
-		ex.printStackTrace();
-		// for debugging purposes
-		final APIError apiError = new APIError();
-		apiError.setMsgDeveloper(
-				ex.getMessage() == null || ex.getMessage().isEmpty() ? utilService.getStackTrace(ex) : ex.getMessage());
-		apiError.setMessage(ex.getMessage() != null && !ex.getMessage().isEmpty() ? ex.getMessage() : genericError);
-		apiError.setCode(String.valueOf(HttpStatus.EXPECTATION_FAILED));
-		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(apiError);
-
-	}
+	
 	@ResponseBody
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
